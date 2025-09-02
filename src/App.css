@@ -2,3 +2,14 @@ body {
   background-color: rgb(66, 66, 66);
 }
 
+header { 
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 4rem;
+  color: red;
+}
