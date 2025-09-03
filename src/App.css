@@ -3,14 +3,19 @@ body {
 }
 
 header { 
-  margin-top: 5rem;
+  margin-top: 7rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 6rem;
   color: red;
   font-family: Satisfy;
+}
+
+.navbar {
+  background-color: black;
+  height: 3rem;
 }
