@@ -5,7 +5,11 @@ function Quiz() {
     return(
         <div>
             <Navbar />
-            <h1>Welcome to the Quiz Page!</h1>
+            <div className="container quiz flex">
+                <div className="quiz-container">
+
+                </div>
+            </div>
         </div>
     )
 };

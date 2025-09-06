@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 
-function Header(){
+function Home(){
     return(
         <div className='container-fluid flex'>
             <Navbar />
@@ -20,4 +20,4 @@ function Header(){
     )
 }
 
-export default Header;
+export default Home;

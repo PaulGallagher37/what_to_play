@@ -5,7 +5,7 @@ function Navbar() {
         <div className="container-fluid">
             <ul className="navbar">
                 <Link to="/" style={{ textDecoration: "none"}}><li>Home</li></Link>
-                <Link to="quiz" style={{ textDecoration: "none"}}><li>Quiz</li></Link>
+                <Link to="/quiz" style={{ textDecoration: "none"}}><li>Quiz</li></Link>
             </ul>
         </div>
     )

@@ -2,6 +2,8 @@ body {
   background-color: rgb(43, 43, 43);
 }
 
+/*Home CSS*/
+
 header { 
   margin-top: 7rem;
   display: flex;
@@ -52,6 +54,8 @@ p {
   border: solid red 0.05rem;
 }
 
+/*Navbar CSS*/
+
 .navbar {
   background-color: black;
   display: flex;
@@ -64,4 +68,27 @@ li {
   margin-left: 2rem;
   color: white;
   text-decoration: none;
+}
+
+/*Quiz CSS*/
+
+.quiz-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(49, 49, 49);
+  width: 65vw;
+  height: 65vh;
+  border: solid red 0.15rem;
+  border-radius: 0.75rem;
+}
+
+.container.quiz.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 90vh;
+  padding: 0;
 }
