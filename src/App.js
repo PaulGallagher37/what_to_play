@@ -1,14 +1,18 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Header from './components/Header';
-import Navbar from './components/Navbar';
+import Quiz from './components/Quiz';
+
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <Header />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Header />} />
+        <Route path="quiz" element={<Quiz />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

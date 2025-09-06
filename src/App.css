@@ -13,9 +13,55 @@ h1 {
   font-size: 6rem;
   color: red;
   font-family: Satisfy;
+  margin-bottom: 2rem;
+}
+
+p {
+  color: white;
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.container.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  padding: 0;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.button {
+  margin-top: 1rem;
+  background-color: red;
+  color: white;
+  border: solid white 0.05rem;
+  border-radius: 0.5rem;
+  width: 12rem;
+  height: 3rem;
+  font-size: 1.25rem;
+}
+
+.button:hover {
+  background-color: white;
+  color: red;
+  border: solid red 0.05rem;
 }
 
 .navbar {
   background-color: black;
+  display: flex;
+  justify-content:flex-start;
   height: 3rem;
+}
+
+li {
+  list-style: none;
+  margin-left: 2rem;
+  color: white;
+  text-decoration: none;
 }
