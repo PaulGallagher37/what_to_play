@@ -11,14 +11,14 @@ header {
   align-items: center;
 }
 
-h1 {
+.home-h1 {
   font-size: 6rem;
   color: red;
   font-family: Satisfy;
   margin-bottom: 2rem;
 }
 
-p {
+.home-p {
   color: white;
   margin-top: 0.5rem;
   font-size: 1.25rem;
@@ -92,3 +92,12 @@ li {
   height: 90vh;
   padding: 0;
 }
+
+/*Questions CSS*/
+
+.container.question-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

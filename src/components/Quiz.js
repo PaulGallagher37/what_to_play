@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
+import Questions from "./Questions";
 
 function Quiz() {
     return(
@@ -7,7 +8,7 @@ function Quiz() {
             <Navbar />
             <div className="container quiz flex">
                 <div className="quiz-container">
-
+                    <Questions />
                 </div>
             </div>
         </div>
