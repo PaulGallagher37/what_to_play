@@ -6,24 +6,29 @@ import { useState } from "react";
 function Questions() {
 
 
-const [currentQuestion, setCurrentQuestion] = useState({});
+const [currentIndex, setCurrentIndex] = useState(0);
 
-
-const generateQuestion = () => {
-    const Question_List = [
+const Question_List = [
     {question: "Question One"},
     {question: "Question Two"},
     {question: "Question Three"},
-    {question: "Question Four"}
+    {question: "Question Four"},
+    {question: "Question Five"}
 ];
-    const Index = Math.floor(Math.random() * Question_List.length);
-    setCurrentQuestion(Question_List[Index])
-}
+
+
+const generateQuestion = () => {
+    if (currentIndex < Question_List.length + 1){
+        setCurrentIndex(currentIndex + 1)
+    } 
+    
+};
+
 
 
     return (
         <div className="container question-container">
-            <h1 className="questions-h1">{currentQuestion.question}</h1>
+            <h1 className="questions-h1">{Question_List[currentIndex].question}</h1>
             <input></input>
             <button onClick={() => generateQuestion()}>Next Question</button>
         </div>
