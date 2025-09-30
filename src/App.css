@@ -119,11 +119,19 @@ li {
   border-radius: 0.25rem;
 }
 
-.questions-button {
+.questions-button-next {
   background-color: red !important;
   color: white;
   border: solid white 0.15rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
+}
+
+.questions-button-submit {
+  background-color: rgb(0, 26, 255) !important;
+  color: white;
+  border: solid white 0.15rem;
+  margin-top: 4rem;
+  width: 10rem;
 }
 
 .questions-label {
