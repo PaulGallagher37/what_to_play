@@ -42,16 +42,16 @@ const nextQuestion = () => {
         <div className="container question-container">
                 <div>
                     <h1 className="questions-h1">{Question_List[currentIndex].question}</h1>
-                    <ul>
+                    <ul  className="grid-container">
                         {Question_List[currentIndex].answers.map((answer) => (
-                            <div className="container">
+                            <div className="grid-item">
                                 <input type="radio" value={answer}></input>
                                 <label className="questions-label">{answer}</label>
                             </div>
                         ))}
                     </ul>
                 </div>
-              <button className="btn btn-primary" onClick={nextQuestion}>Next</button>
+              <button className="btn btn-primary questions-button" onClick={nextQuestion}>Next</button>
         </div>
     )
 };
