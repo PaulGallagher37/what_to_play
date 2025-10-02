@@ -83,13 +83,12 @@ li {
   justify-content: center;
   align-items: center;
   background-color: rgb(49, 49, 49);
-  width: 65vw;
-  height: 65vh;
+  width: 85vw;
+  height: 75vh;
   border: solid red 0.15rem;
   border-radius: 0.75rem;
 }
-
-.container.quiz.flex {
+ .container.quiz.flex {
   display: flex;
   flex-direction: column;
   justify-content: center;

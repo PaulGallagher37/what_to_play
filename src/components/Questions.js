@@ -16,12 +16,12 @@ const Question_List = [
     {question: "What setting appeals to you most?", 
         answers: ["Mythical unerworld", "Futuristic battlefield", "Sprawling Fantasy Realm", "Historical Era", "Cozy Countryside"]},
     {question: "How important is replayability to you?", 
-        answers: ["I enjoy slow-paced repeat sessions", "I want infinite run-based replays", "Somereplya is fine, but story matters most", "I play competitive modes endlessly"]},
+        answers: ["I enjoy slow-paced repeat sessions", "I want infinite run-based replays", "Some replay is fine, but story matters most", "I play competitive modes endlessly"]},
     {question: "Choose your favourite in-game activity.", 
         answers: ["Facing randomised challenges", "Exploring hidden caves and ruins", "Fishing and Farming", "Co-ordinating team skirmishes"]},
     {question: "Pick a visual style that draws you in.", 
         answers: ["Sleek and futuristic", "Lush, vibrant fantasy landscapes", "Pixel art or hand-drawn", "Stylised mythic or underworld aesthetic"]}, 
-    {question: "Thank you for your answers - Please press the submit button to get your recomendations!"}
+    {question: "Thank you for your answers - Please press the submit button to get your recomendations!", answers: [undefined]}
 ];
 
 const [answers, setAnswers] = useState([]);
@@ -53,12 +53,12 @@ const logAnswers = () => {
                 <div>
                     <h1 className="questions-h1">{Question_List[currentIndex].question}</h1>
                     <ul  className="grid-container">
-                        {Question_List[currentIndex].answers.map((answer) => (
-                            <div className="grid-item">
+                        {answers && Question_List[currentIndex].answers.map((answer) => (
+                            <div className="grid-item" key={answer}>
                                 <input type="radio" value={answer} name={`question${currentIndex}`} onChange={captureAnswer}></input>
                                 <label className="questions-label">{answer}</label>
                             </div>
-                        ))}
+                        )) }
                     </ul>
                 </div>
               <button className="btn btn-primary questions-button-next" onClick={nextQuestion}>Next</button>
