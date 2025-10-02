@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 function Questions() {
@@ -62,7 +63,7 @@ const logAnswers = () => {
                     </ul>
                 </div>
               <button className="btn btn-primary questions-button-next" onClick={nextQuestion}>Next</button>
-              <button className="btn btn-primary questions-button-submit" onClick={logAnswers}>Submit Answers</button>
+              <Link to="/recomendations"><button className="btn btn-primary questions-button-submit" onClick={logAnswers}>Submit Answers</button></Link>
         </div>
     )
 };
