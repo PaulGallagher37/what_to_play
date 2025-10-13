@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+
 
 
 function Questions() {
@@ -22,11 +22,11 @@ const Question_List = [
         answers: ["Facing randomised challenges", "Exploring hidden caves and ruins", "Fishing and Farming", "Co-ordinating team skirmishes"]},
     {question: "Pick a visual style that draws you in.", 
         answers: ["Sleek and futuristic", "Lush, vibrant fantasy landscapes", "Pixel art or hand-drawn", "Stylised mythic or underworld aesthetic"]}, 
-    {question: "Thank you for your answers - Please press the submit button to get your recomendations!", answers: [undefined]}
 ];
 
-const [answers, setAnswers] = useState([]);
-const [currentIndex, setCurrentIndex] = useState(0)
+const [currentIndex, setCurrentIndex] = useState(0);
+const [prompt, setPrompt] = useState([]);
+const [recommendations, setRecommendations] = useState("");
 
 
 
@@ -40,30 +40,43 @@ const nextQuestion = () => {
 
 const captureAnswer = (event) => {
     const value = event.target.value;
-    setAnswers([...answers, value])
-}
-
-const logAnswers = () => {
-    console.log(answers)
+    setPrompt([...prompt, value])
 }
 
 
+async function handleSubmit(e) {
+    e.preventDefault();
+    setRecommendations("");
+
+    const response = await fetch("http://localhost:4000/api/recommend", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt }),
+    });
+
+    const data = await response.json();
+    setRecommendations(data.result);
+}
 
     return (
         <div className="container question-container">
                 <div>
                     <h1 className="questions-h1">{Question_List[currentIndex].question}</h1>
                     <ul  className="grid-container">
-                        {answers && Question_List[currentIndex].answers.map((answer) => (
-                            <div className="grid-item" key={answer}>
+                        {Question_List[currentIndex].answers.map((answer) => (
+                            <li className="grid-item" key={answer}>
                                 <input type="radio" value={answer} name={`question${currentIndex}`} onChange={captureAnswer}></input>
                                 <label className="questions-label">{answer}</label>
-                            </div>
+                            </li>
                         )) }
                     </ul>
                 </div>
               <button className="btn btn-primary questions-button-next" onClick={nextQuestion}>Next</button>
-              <Link to="/recomendations"><button className="btn btn-primary questions-button-submit" onClick={logAnswers}>Submit Answers</button></Link>
+              <button className="btn btn-primary questions-button-submit" onClick={handleSubmit}>Submit Answers</button>
+                <div>
+                    <h2>Results:</h2>
+                    <p>{recommendations}</p>
+                </div>
         </div>
     )
 };
