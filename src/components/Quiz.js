@@ -6,10 +6,8 @@ function Quiz() {
     return(
         <div>
             <Navbar />
-            <div className="container quiz flex">
-                <div className="quiz-container">
-                    <Questions />
-                </div>
+            <div className="container quiz-container">
+                <Questions />
             </div>
         </div>
     )

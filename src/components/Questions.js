@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -27,6 +28,7 @@ const Question_List = [
 const [currentIndex, setCurrentIndex] = useState(0);
 const [prompt, setPrompt] = useState([]);
 const [recommendations, setRecommendations] = useState("");
+const navigate = useNavigate();
 
 
 
@@ -45,17 +47,21 @@ const captureAnswer = (event) => {
 
 
 async function handleSubmit(e) {
-    e.preventDefault();
-    setRecommendations("");
-
-    const response = await fetch("http://localhost:4000/api/recommend", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt }),
+    if (e?.preventDefault) e.preventDefault();
+    try {
+        setRecommendations("");
+        const response = await fetch("http://localhost:4000/api/recommend", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
     });
-
+    if (!response.ok) throw new Error(`Server error: ${response.status}`);
     const data = await response.json();
     setRecommendations(data.result);
+    navigate("/recommendations", { state: {recommendations: data.result}})
+    }  catch (err) {
+        console.error(err);
+    }
 }
 
     return (
@@ -73,10 +79,6 @@ async function handleSubmit(e) {
                 </div>
               <button className="btn btn-primary questions-button-next" onClick={nextQuestion}>Next</button>
               <button className="btn btn-primary questions-button-submit" onClick={handleSubmit}>Submit Answers</button>
-                <div>
-                    <h2>Results:</h2>
-                    <p>{recommendations}</p>
-                </div>
         </div>
     )
 };

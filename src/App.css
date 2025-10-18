@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: white;
 }
 
 body {
@@ -87,7 +88,9 @@ li {
   height: 75vh;
   border: solid red 0.15rem;
   border-radius: 0.75rem;
+
 }
+
  .container.quiz.flex {
   display: flex;
   flex-direction: column;
@@ -151,4 +154,10 @@ li {
   font-size: 1.25rem;
   margin-left: 2rem;
   margin-right: 2rem;
+}
+
+/*Reccomendations CSS*/
+
+.rec-container {
+  margin: 3rem;
 }
