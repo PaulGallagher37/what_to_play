@@ -15,12 +15,6 @@ const Question_List = [
         answers: ["Long sessions exploring vast worlds", "Quick high-intensity matches", "Leisurely, relaxed play"]},
     {question: "What's your favourite genre?", 
         answers: ["Fighting", "Action", "Adventure", "RPG", "Metroidvania", "Platformer", "FPS", "Puzzle", "Sports", "Racing", "Horror", "Stealth"]},
-    {question: "What setting appeals to you most?", 
-        answers: ["Mythical unerworld", "Futuristic battlefield", "Sprawling Fantasy Realm", "Historical Era", "Cozy Countryside"]},
-    {question: "How important is replayability to you?", 
-        answers: ["I enjoy slow-paced repeat sessions", "I want infinite run-based replays", "Some replay is fine, but story matters most", "I play competitive modes endlessly"]},
-    {question: "Choose your favourite in-game activity.", 
-        answers: ["Facing randomised challenges", "Exploring hidden caves and ruins", "Fishing and Farming", "Co-ordinating team skirmishes"]},
     {question: "Pick a visual style that draws you in.", 
         answers: ["Sleek and futuristic", "Lush, vibrant fantasy landscapes", "Pixel art or hand-drawn", "Stylised mythic or underworld aesthetic"]}, 
 ];
@@ -58,7 +52,7 @@ async function handleSubmit(e) {
     if (!response.ok) throw new Error(`Server error: ${response.status}`);
     const data = await response.json();
     setRecommendations(data.result);
-    navigate("/recommendations", { state: {recommendations: data.result}})
+    navigate("/recommendations", { state: {recommendations: data.result}});
     }  catch (err) {
         console.error(err);
     }
@@ -77,8 +71,8 @@ async function handleSubmit(e) {
                         )) }
                     </ul>
                 </div>
-              <button className="btn btn-primary questions-button-next" onClick={nextQuestion}>Next</button>
-              <button className="btn btn-primary questions-button-submit" onClick={handleSubmit}>Submit Answers</button>
+              <button className="btn btn-primary questions-button-next" onClick={nextQuestion} disabled={prompt.length === Question_List.length}>Next</button>
+              <button className="btn btn-primary questions-button-submit" onClick={handleSubmit} disabled={prompt.length !== Question_List.length}>Submit Answers</button>
         </div>
     )
 };

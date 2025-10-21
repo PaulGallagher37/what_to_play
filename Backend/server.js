@@ -29,7 +29,7 @@ app.post("/api/recommend", async (req, res) => {
                 },
                 { 
                   role: "user", 
-                  content: [ {type: "text", text: prompt} ] 
+                  content: [ {type: "text", text: `Provide 5 game recommendations based on the following: ${prompt}`} ] 
                 },
             ],
             temperature: 0.8,
