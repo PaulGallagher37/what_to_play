@@ -88,7 +88,7 @@ li {
   height: 75vh;
   border: solid red 0.15rem;
   border-radius: 0.75rem;
-
+  margin-top: 4rem;
 }
 
  .container.quiz.flex {

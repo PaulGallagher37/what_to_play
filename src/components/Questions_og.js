@@ -7,11 +7,16 @@ import { useNavigate } from "react-router-dom";
 function Questions() {
 
 const Question_List = [
-    "Do you prefer Single Player or Multi-Player?",
-    "Are you in the mood for retro, or modern?",
-    "What's your ideal gaming session length when you have free time?", 
-    "What's your favourite genre?", 
-    "Pick a visual style that draws you in.",  
+    {question: "Do you prefer Single Player or Multi-Player?", 
+        answers: ["Single Player", "Multiplayer"]},
+    {question: "Are you in the mood for retro, or modern?", 
+        answers: ["Retro", "Modern"]},
+    {question: "What's your ideal gaming session length when you have free time?", 
+        answers: ["Long sessions exploring vast worlds", "Quick high-intensity matches", "Leisurely, relaxed play"]},
+    {question: "What's your favourite genre?", 
+        answers: ["Fighting", "Action", "Adventure", "RPG", "Metroidvania", "Platformer", "FPS", "Puzzle", "Sports", "Racing", "Horror", "Stealth"]},
+    {question: "Pick a visual style that draws you in.", 
+        answers: ["Sleek and futuristic", "Lush, vibrant fantasy landscapes", "Pixel art or hand-drawn", "Stylised mythic or underworld aesthetic"]}, 
 ];
 
 const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,14 +29,6 @@ const navigate = useNavigate();
 const nextQuestion = () => {
     if (currentIndex < Question_List.length -1){
     setCurrentIndex(currentIndex + 1)
-    } else {
-        setCurrentIndex(currentIndex)
-    }
-}
-
-const previousQuestion = () => {
-    if (currentIndex < Question_List.length + 1 && currentIndex !== 0){
-    setCurrentIndex(currentIndex - 1)
     } else {
         setCurrentIndex(currentIndex)
     }
@@ -69,18 +66,18 @@ async function handleSubmit(e) {
     return (
         <div className="container question-container">
                 <div>
-                    <h1 className="questions-h1">{Question_List[currentIndex]}</h1>
+                    <h1 className="questions-h1">{Question_List[currentIndex].question}</h1>
                     <ul  className="grid-container">
-                        <li>
-                            <input type="text" onChange={captureAnswer}></input>
-                        </li>    
+                        {Question_List[currentIndex].answers.map((answer) => (
+                            <li className="grid-item" key={answer}>
+                                <input type="radio" value={answer} name={`question${currentIndex}`} onChange={captureAnswer}></input>
+                                <label className="questions-label">{answer}</label>
+                            </li>
+                        )) }
                     </ul>
                 </div>
-                <div>
-                    <button className="btn btn-primary questions-button-next" onClick={previousQuestion} disabled={prompt.length === Question_List.length}>Previous</button>
-                    <button className="btn btn-primary questions-button-next" onClick={nextQuestion} disabled={prompt.length === Question_List.length}>Next</button>
-                </div>
-                <button className="btn btn-primary questions-button-submit" onClick={handleSubmit} disabled={prompt.length !== Question_List.length}>Submit Answers</button>
+              <button className="btn btn-primary questions-button-next" onClick={nextQuestion} disabled={prompt.length === Question_List.length}>Next</button>
+              <button className="btn btn-primary questions-button-submit" onClick={handleSubmit} disabled={prompt.length !== Question_List.length}>Submit Answers</button>
         </div>
     )
 };
