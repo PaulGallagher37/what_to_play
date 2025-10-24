@@ -71,14 +71,14 @@ async function handleSubmit(e) {
                 <div>
                     <h1 className="questions-h1">{Question_List[currentIndex]}</h1>
                     <ul  className="grid-container">
-                        <li>
+                        <li className="grid-item" >
                             <input type="text" onChange={captureAnswer}></input>
                         </li>    
                     </ul>
                 </div>
                 <div>
-                    <button className="btn btn-primary questions-button-next" onClick={previousQuestion} disabled={prompt.length === Question_List.length}>Previous</button>
-                    <button className="btn btn-primary questions-button-next" onClick={nextQuestion} disabled={prompt.length === Question_List.length}>Next</button>
+                    <button className="btn btn-primary questions-button" onClick={previousQuestion} disabled={prompt.length === Question_List.length}>Previous</button>
+                    <button className="btn btn-primary questions-button" onClick={nextQuestion} disabled={prompt.length === Question_List.length}>Next</button>
                 </div>
                 <button className="btn btn-primary questions-button-submit" onClick={handleSubmit} disabled={prompt.length !== Question_List.length}>Submit Answers</button>
         </div>
