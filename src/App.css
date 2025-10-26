@@ -154,6 +154,12 @@ header {
   list-style-type: none;
 }
 
+input {
+  border-radius: 0.25rem;
+  color: black;
+  padding-left: .5rem;
+}
+
 /*Reccomendations CSS*/
 
 .rec-container {
