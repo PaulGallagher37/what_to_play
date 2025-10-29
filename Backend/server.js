@@ -23,16 +23,20 @@ app.post("/api/recommend", async (req, res) => {
         const response = await client.chat.completions.create({
             model: "gpt-4o-mini",
             messages: [
-                { 
-                  role: "system", 
-                  content: [ {type: "text", text: "You are a video game recommendation engine."} ] 
+                {
+                  role: "system",
+                  content: `You are a video game recommendation engine.
+                  Always respond with a JSON array of objects like this:
+                  [
+                   { "title": "Game Name", "description": "Brief description", "image": "https://image-url" }
+                  ]`
                 },
                 { 
                   role: "user", 
                   content: [ {type: "text", text: `Provide 5 game recommendations based on the following: ${prompt}`} ] 
                 },
             ],
-            temperature: 0.8,
+            response_format: { type: "json_object" }
         });
 
         res.json({ result: response.choices[0].message.content });

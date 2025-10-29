@@ -9,31 +9,33 @@ function Questions() {
 const Question_List = [
     "Do you prefer Single Player or Multi-Player?",
     "Are you in the mood for Retro or Modern?",
-    "What's your ideal gaming session length when you have free time?", 
+    "What's your ideal gaming session length?", 
     "What's your favourite genre?", 
-    "What was the last game you really enjoyed playing?",  
+    "What's your prefered console of choice?",  
 ];
 
 const [currentIndex, setCurrentIndex] = useState(0);
 const [prompt, setPrompt] = useState([]);
 const [recommendations, setRecommendations] = useState("");
 const [input, setInput] = useState("");
+const [loading, setLoading] = useState(false);
 const navigate = useNavigate();
 
 
 
-const nextQuestion = (event) => {
-    if (currentIndex < Question_List.length -1){
-    setCurrentIndex(currentIndex + 1)
+const nextQuestion = async () => {
+
+    if (input && input !== ""){
+     setPrompt((prev) => [...prev, input])
+     setInput("");
+
+     if (currentIndex < Question_List.length -1){
+    setCurrentIndex((prev) => prev + 1)
     } else {
-        setCurrentIndex(currentIndex)
-    }
-    if (input){
-     setPrompt([...prompt, input])
-    } 
-    setInput("")
-    console.group(prompt);
-}
+        setLoading(true);
+    };
+  };
+};
 
 const previousQuestion = () => {
     if (currentIndex < Question_List.length + 1 && currentIndex !== 0){
