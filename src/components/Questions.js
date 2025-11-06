@@ -63,7 +63,7 @@ async function handleSubmit(e) {
     const data = await response.json();
     if (data && typeof data.result !== "undefined") {
         setRecommendations(data.result);
-        navigate("/recommendations", { state: {recommendations: data.result}});
+        navigate("/recommendations", { state: {quizData: data.result}});
     } else {
         setRecommendations("No recommendations found.");
         console.error("API response missing 'result' property:", data);

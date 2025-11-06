@@ -21,28 +21,32 @@ app.post("/api/recommend", async (req, res) => {
         }
 
         const response = await client.chat.completions.create({
-            model: "gpt-4o-mini",
+            model: "gpt-4o-2024-08-06",
             messages: [
                 {
                   role: "system",
-                  content: `You are a video game recommendation engine.
-                  Always respond with a JSON array of objects like this:
-                  [
-                   { "title": "Game Name", "description": "Brief description", "image": "https://image-url" }
-                  ]`
-                },
+                  content: 'You are a video game recommendation engine. Respond with recommendations in the following format: {"recommendations": [{ "title": "Game Name", "description": "Brief description", "image": "https://image-url" }]}'},
+
                 { 
                   role: "user", 
-                  content: [ {type: "text", text: `Provide 5 game recommendations based on the following: ${prompt}`} ] 
+                  content: `Provide 5 game recommendations based on the following: ${prompt}`
                 },
             ],
-            response_format: { type: "json_object" }
+            temperature: 0.8,
+            max_tokens: 600,
         });
-
-        res.json({ result: response.choices[0].message.content });
+        const raw = response?.choices?.[0]?.message?.content;
+        let parsed;
+        try {
+            parsed = typeof raw == "string" ? JSON.parse(raw) : raw;
+        } catch (err) {
+            console.error("OpenAI API error:", err, raw);
+            return res.status(500).json({ error: "Invalid response format from AI" });
+        }
+        res.json({ result : parsed});
     } catch (err) {
-        console.error("OpenAI API error:", err);
-        res.status(500).json({ error: err.message || String(err) });
+        console.error("Server error:", err);
+        res.status(500).json({ error: "Server error" });
     }
 });
 
